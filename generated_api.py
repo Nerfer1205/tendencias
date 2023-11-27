@@ -4,6 +4,15 @@ from http import HTTPStatus
 app = Flask(__name__)
 
 
+@app.route('/post_endpoint', methods=['POST'])
+def post__post_endpoint():
+    # post_description
+    # Implementa la lógica de la solicitud aquí
+    if 'loro' not in request.json:
+        return jsonify({"message": "", "data": [], "errors": ["'loro' is required in the request body"]}), HTTPStatus.BAD_REQUEST
+            
+    return 'Implementación de POST para /post_endpoint'
+
 @app.route('/get_endpoint', methods=['GET'])
 def get__get_endpoint():
     # get_description
@@ -14,15 +23,6 @@ def get__get_endpoint():
     # Ajusta esta lógica según tus necesidades específicas.
 
     return 'Implementación de GET para /get_endpoint'
-
-@app.route('/post_endpoint', methods=['POST'])
-def post__post_endpoint():
-    # post_description
-    # Implementa la lógica de la solicitud aquí
-    if 'loro' not in request.json:
-        return jsonify({"message": "", "data": [], "errors": ["'loro' is required in the request body"]}), HTTPStatus.BAD_REQUEST
-            
-    return 'Implementación de POST para /post_endpoint'
 
 @app.route('/put_endpoint', methods=['PUT'])
 def put__put_endpoint():
